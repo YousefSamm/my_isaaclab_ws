@@ -1,6 +1,6 @@
 # My Isaac Lab Workspace
 
-This is an external Isaac Lab workspace that depends on the main Isaac Lab repository.
+This is an external Isaac Lab workspace that depends on the main Isaac Lab repository: https://github.com/isaac-sim/IsaacLab.git
 
 It was created to develop and train a locomotion controller using Reinforcement Learning with RSL-RL. The project follows the manager-based workflow from Isaac Lab to organize tasks, configurations, and training pipelines.
 
