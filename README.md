@@ -17,7 +17,7 @@ The final goal is to deploy the trained policy in Isaac Sim and integrate it wit
 
    ```bash
    git clone https://github.com/YousefSamm/my_isaaclab_ws.git
-   cd my_isaaclab_ws/spot_locomtion
+   cd my_isaaclab_ws/spot_locomotion
 3. **install the custom module**
     ```bash
     python -m pip install -e spot_locomotion/source
