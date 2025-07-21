@@ -41,6 +41,18 @@ if args_cli.video:
 # clear out sys.argv for Hydra
 sys.argv = [sys.argv[0]] + hydra_args
 
+# Debug: Print the task name
+print(f"[DEBUG] Task name from CLI: {args_cli.task}")
+print(f"[DEBUG] Task name type: {type(args_cli.task)}")
+
+# Check if task name is provided
+if args_cli.task is None:
+    print("[ERROR] No task name provided!")
+    print("[INFO] Available tasks:")
+    print("[INFO] Run 'python scripts/list_envs.py' to see all available tasks")
+    print("[INFO] Example usage: python scripts/rsl_rl/train.py --task=Template-Velocity-Flat-Spot-v0")
+    exit(1)
+
 # launch omniverse app
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
@@ -73,6 +85,14 @@ import gymnasium as gym
 import os
 import torch
 from datetime import datetime
+
+# Clear any existing registrations to avoid conflicts
+for env_id in list(gym.registry.keys()):
+    if "Template-" in env_id or "Isaac-" in env_id:
+        try:
+            gym.registry.pop(env_id)
+        except KeyError:
+            pass
 
 from rsl_rl.runners import OnPolicyRunner
 
